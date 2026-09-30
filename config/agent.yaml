@@ -1,0 +1,20 @@
+# Agent Manifest — AgentRegistry entry point
+# This file is required for AgentRegistry auto-discovery (lazy-load architecture)
+
+id: "GOV-C2-094"
+name: "RentRevisionEvidencePacketAgent"
+namespace: "gov"
+version: "0.1.0"
+description: "Municipal Public-Housing Rent Revision Evidence Packet Agent"
+enabled: true
+category: "Cat 2"
+industry: "GOV"
+# L1-direct: inherits AgentBaseGraph directly (no Level-2 base type).
+# Cat 2 composition via GraphNode wrapping an inner AgentBaseGraph
+# (src/graph/domain_workflow_graph.py) — see docs/02_design.md.
+base_type: "AgentBaseGraph"
+class: "src.graph.graph.RentRevisionEvidencePacketAgent"
+required_trust_level: "VERIFIED_EXTERNAL"
+requires:
+  secrets: ["ANTHROPIC_API_KEY"]
+  extras: ["anthropic"]
